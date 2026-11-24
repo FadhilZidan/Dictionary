@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Kamus Sederhana</string>
+    <string name="menu_tambah">Tambah</string>
+    <string name="menu_cari">Cari</string>
+    <string name="menu_daftar">Daftar</string>
+    <string name="label_kata_indonesia">Kata Indonesia</string>
+    <string name="label_arti_inggris">Arti Inggris</string>
+    <string name="hint_contoh_kucing">contoh: kucing</string>
+    <string name="hint_contoh_cat">contoh: cat</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="btn_cari">Cari</string>
+    <string name="hint_cari">Masukkan kata...</string>
+    <string name="jumlah_kata">Jumlah kata: %d</string>
+    <string name="kata_tidak_ditemukan">Kata tidak ditemukan</string>
+    <string name="pesan_berhasil_simpan">Kata berhasil disimpan</string>
+    <string name="pesan_input_kosong">Mohon isi kedua kolom</string>
+</resources>
