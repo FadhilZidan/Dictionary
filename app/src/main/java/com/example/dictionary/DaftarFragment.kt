@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class DaftarFragment : Fragment() {
 
-    private val adapter = KataAdapter()
+    private lateinit var adapter: KataAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +32,10 @@ class DaftarFragment : Fragment() {
         val txtJumlah = view.findViewById<TextView>(R.id.txtJumlah)
         val rvDaftarKata = view.findViewById<RecyclerView>(R.id.rvDaftarKata)
 
+        adapter = KataAdapter(onDeleteClick = { kata ->
+            tampilkanKonfirmasiHapus(kata)
+        })
+
         rvDaftarKata.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -41,5 +47,24 @@ class DaftarFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun tampilkanKonfirmasiHapus(kata: Kata) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.dialog_hapus_judul))
+            .setMessage(getString(R.string.dialog_hapus_pesan, kata.indonesia))
+            .setPositiveButton(getString(R.string.dialog_hapus_positif)) { _, _ ->
+                lifecycleScope.launch {
+                    val db = KamusDatabase.getInstance(requireContext())
+                    db.kataDao().hapus(kata)
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.pesan_berhasil_hapus, kata.indonesia),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .setNegativeButton(getString(R.string.dialog_hapus_negatif), null)
+            .show()
     }
 }

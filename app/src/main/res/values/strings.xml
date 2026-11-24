@@ -14,4 +14,10 @@
     <string name="kata_tidak_ditemukan">Kata tidak ditemukan</string>
     <string name="pesan_berhasil_simpan">Kata berhasil disimpan</string>
     <string name="pesan_input_kosong">Mohon isi kedua kolom</string>
+    <string name="dialog_hapus_judul">Hapus Kata</string>
+    <string name="dialog_hapus_pesan">Apakah Anda yakin ingin menghapus kata \"%s\"?</string>
+    <string name="dialog_hapus_positif">Hapus</string>
+    <string name="dialog_hapus_negatif">Batal</string>
+    <string name="pesan_berhasil_hapus">Kata \"%s\" berhasil dihapus</string>
+    <string name="cd_hapus_kata">Hapus kata</string>
 </resources>
